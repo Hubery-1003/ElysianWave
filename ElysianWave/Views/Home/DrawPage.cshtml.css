@@ -1,0 +1,80 @@
+﻿.main-div {
+    position: relative;
+    display: flex;
+    padding: 0px;
+    height: auto;
+    justify-content: center;
+}
+
+    .main-div .navBar {
+        position: absolute;
+        top: 0px;
+        visibility: hidden;
+        background-color: #9faab38e;
+        width: 1920px;
+        max-width: 99%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: top 0.5s;
+        border-radius: 10px;
+        /* 增加滑動效果 */
+    }
+
+        .main-div .navBar ul {
+            display: flex;
+            position: relative;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+            .main-div .navBar ul li {
+                display: flex;
+                margin: 0 15px;
+            }
+
+            .main-div .navBar ul .firstgroupli:hover {
+                color: aliceblue;
+                cursor: pointer;
+            }
+
+            .main-div .navBar ul .secondgroupli:hover {
+                color: aliceblue;
+                cursor: pointer;
+            }
+
+#widthspan:hover {
+    cursor: pointer;
+    color: aliceblue;
+}
+
+.finishButton {
+    margin-left: 900px;
+    margin-top: 30px;
+    width: 120px;
+    height: 60px;
+    background-color: #198754;
+    border-color: #198754;
+    box-shadow: 0 0 0 0 #198754;
+    border-radius: 10px;
+}
+
+#finish1:hover {
+    color: aliceblue;
+    background-color: #19875488;
+    border-color: #198754;
+}
+
+#finish1:active {
+    color: aliceblue;
+    background-color: #19875488;
+    border-color: #198754;
+}
+
+#shareWindow {
+    visibility: hidden;
+}

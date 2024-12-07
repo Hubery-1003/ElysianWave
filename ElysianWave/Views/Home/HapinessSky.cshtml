@@ -1,0 +1,128 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section Scripts{
+<script src="~/Views/Home/HapinessSky.cshtml.js"></script>
+}
+<!--小便利貼-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="header-text mt-3 mb-3" style="text-align: center;">
+                <h2 style="color: rgb(9, 9, 9); font-weight: bold;">極浪天空</h2>
+            </div>
+            <div class="rounded-3 sticknote_window d-flex flex-wrap justify-content-around overflow-scroll">
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote img-fluid" id="myImage_01"
+                         onclick="appearnotes_func01()">
+                    <p class="notes_Nickname_text" id="re_Nickname_01"></p>
+                </div>
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote" id="myImage_02" onclick="appearnotes_func02()">
+                    <p class="notes_Nickname_text" id="re_Nickname_02"></p>
+                </div>
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote" id="myImage_03" onclick="appearnotes_func03()">
+                    <p class="notes_Nickname_text" id="re_Nickname_03"></p>
+                </div>
+
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote" id="myImage_04" onclick="appearnotes_func04()">
+                    <p class="notes_Nickname_text" id="re_Nickname_04"></p>
+                </div>
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote img-fluid" id="myImage_05"
+                         onclick="appearnotes_func05()">
+                    <p class="notes_Nickname_text" id="re_Nickname_05"></p>
+                </div>
+                <div>
+                    <img src="@Url.Content("~/圖片/便利貼.gif")" class="stickynote" id="myImage_06" onclick="appearnotes_func06()">
+                    <p class="notes_Nickname_text" id="re_Nickname_06"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12"></div>
+        <div class="rounded-3 sticknote_inputwindow_ms sticknote_inputwindow_lg sticknote_inputwindow_xl p-0 m-0"
+             style="overflow: auto;">
+            <div style="max-height: 100%;">
+                <div style="max-height: 10%;position: relative;">
+                    <textarea class="form-control bg-light bg-opacity-50 mb-0 mt-2" rows="1" id="nickname"
+                              placeholder="請輸入暱稱．．．"></textarea>
+                </div>
+                <div style="max-width: 100%;max-height: 90%;display: flex;">
+                    <textarea class="form-control bg-light bg-opacity-50 mt-1" id="heart"
+                              style="overflow-y: scroll;max-width: 95%;" placeholder="請輸入內容......"></textarea>
+                    <button class="btn btn-success mt-1 mx-1" onclick="bitNumber()"
+                            style="height: 158px;z-index: 2;width:5%;text-align:center;">
+                        輸入
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 大便利貼 -->
+<div class="container-fluid">
+
+    <div class="d-flex align-items-center justify-content-center"
+         style="position: fixed;top: 50%;left: 50%;transform: translate(-50%-50%);">
+
+        <img id="appearnotes_01" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_01" class="bigStickyNote_Text_ms bigStickyNote_Text_lg bigStickyNote_Text_xl "
+                  style="background-color: rgba(240, 248, 255, 0);" rows="8"></textarea>
+        <button id="closeButton_bigStickyNotes_01" onclick="closeButton_01()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+        <img id="appearnotes_02" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_02" class="bigStickyNote_Text_ms bigStickyNote_Text_lg bigStickyNote_Text_xl "
+                  rows="8" style="background-color: rgba(240, 248, 255, 0);"></textarea>
+        <button id="closeButton_bigStickyNotes_02" onclick="closeButton_02()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+        <img id="appearnotes_03" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_03" class="bigStickyNote_Text_ms bigStickyNote_Text_lg bigStickyNote_Text_xl "
+                  rows="8" style="background-color: rgba(240, 248, 255, 0);"></textarea>
+        <button id="closeButton_bigStickyNotes_03" onclick="closeButton_03()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+        <img id="appearnotes_04" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_04" class="bigStickyNote_Text_ms bigStickyNote_Text_lg bigStickyNote_Text_xl"
+                  rows="8" style="background-color: rgba(240, 248, 255, 0);"></textarea>
+        <button id="closeButton_bigStickyNotes_04" onclick="closeButton_04()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+        <img id="appearnotes_05" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_05" class="bigStickyNote_Text_ms bigStickyNote_Text_lg bigStickyNote_Text_xl"
+                  rows="8" style="background-color: rgba(240, 248, 255, 0);"></textarea>
+        <button id="closeButton_bigStickyNotes_05" onclick="closeButton_05()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+        <img id="appearnotes_06" src="@Url.Content("~/圖片/便利貼.gif")" class="bigStickyNote">
+        <textarea id="showtext_06" class="bigStickyNote_Text_ms bigStickyNote_Text_xl " rows="8"
+                  style="background-color: rgba(240, 248, 255, 0);"></textarea>
+        <button id="closeButton_bigStickyNotes_06" onclick="closeButton_06()"
+                class="bigStickyNote_Close_ms bigStickyNote_Close_lg bigStickyNote_Close_xl  btn btn-outline-danger">
+            X
+        </button>
+
+    </div>
+</div>
+
+
+
+
+

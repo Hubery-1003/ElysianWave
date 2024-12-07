@@ -1,0 +1,126 @@
+.notes_Nickname_text {
+    position: relative;
+    top: -20%;
+    left: 20%;
+    font-weight: bold;
+    color: rgb(10, 10, 10);
+}
+
+
+.sticknote_window {
+    max-width: 100%;
+    height: 75vh;
+    border: 10px double rgb(8, 8, 8);
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+
+
+.stickynote {
+    max-height: 100%;
+    max-width: 100%;
+    visibility: hidden;
+}
+
+/* 大便利貼本人 */
+.bigStickyNote {
+    position: fixed;
+    visibility: hidden;
+    max-width: 900px;
+    z-index: 2;
+}
+
+
+
+
+/* 大便利貼內容小螢幕 */
+@media(min-width:390px) {
+    .bigStickyNote_Text_ms {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        width: 100%;
+        max-width: 230px;
+        left: 25%;
+        border: 0px;
+    }
+
+    .bigStickyNote_Close_ms {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        top: 12%;
+        right: 26%;
+    }
+
+    .sticknote_inputwindow_ms {
+        max-width: 100%;
+        height: 48vh;
+        border: 10px double rgb(8, 8, 8);
+        background-color: rgba(255, 255, 255, 0.548);
+    }
+}
+
+/* 大便利貼內容筆電 */
+@media(min-width:992px) {
+
+    /* 大便利貼內容 */
+    .bigStickyNote_Text_lg {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        left: 40%;
+        width: 100%;
+        max-width: 230px;
+        border: 0px;
+    }
+
+
+    /* 關閉大便利貼鍵 */
+    .bigStickyNote_Close_lg {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        top: 20%;
+        right: 40%;
+    }
+
+    .sticknote_inputwindow_lg {
+        max-width: 100%;
+        height: 40vh;
+        border: 10px double rgb(8, 8, 8);
+        background-color: rgba(255, 255, 255, 0.548);
+    }
+}
+
+/* 大便利貼內容大螢幕 */
+@media(min-width:1400px) {
+
+    /* 大便利貼內容 */
+    .bigStickyNote_Text_xl {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        left: 43.5%;
+        width: 100%;
+        max-width: 230px;
+        border: 0px;
+    }
+
+
+    /* 關閉大便利貼鍵 */
+    .bigStickyNote_Close_xl {
+        position: fixed;
+        visibility: hidden;
+        z-index: 2;
+        top: 32%;
+        right: 44%;
+    }
+
+    .sticknote_inputwindow_xl {
+        max-width: 100%;
+        height: 25vh;
+        border: 10px double rgb(8, 8, 8);
+        background-color: rgba(255, 255, 255, 0.548);
+    }
+}

@@ -1,0 +1,191 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<!--main box -->
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+    <div id="loading">正在跳轉回首頁，請稍後...</div>
+    <!-- login container -->
+    <div class="row p-3 shadow bok-area" id="loginbox"
+         style="background-color: rgba(216, 224, 231, 0.9);border-radius: 10px;visibility: visible;">
+
+        <!-- Left box -->
+        <div class="col-lg-6"
+             style="background-image: url(@Url.Content("~/圖片/登入/登入介面背景.png")); background-size: cover;border-radius:10px ;">
+        </div>
+
+        <!-- right box -->
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="header-text mb-2 text-center">
+                    <h3>會員登入</h3>
+                </div>
+                <div class="input-group mb-2">
+                    <b class="mt-1 me-1">帳號：</b><input type="text" class="form-control form-control-lg bg-light"
+                                                       style="font-size: 14px;" id="logInAccount">
+                </div>
+                <div class="input-group mb-2">
+                    <b class="mt-1 me-1">密碼：</b><input type="password" class="form-control form-control-lg bg-light"
+                                                       style="font-size: 14px;" id="logInPassword">
+                </div>
+                <div class="input-group mb-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="formCheck">
+                        <label for="formCheck" class="form-check-label text-secondary"><small>記住我</small></label>
+                    </div>
+                    <div class="ms-auto">
+                        <small><a href="#">忘記密碼</a></small>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <button type="button" class="btn btn-lg w-100 btn-outline-success" onclick="logIncheck()">登入</button>
+                </div>
+                <div class="input-group mb-3">
+                    <button type="button" class="btn btn-lg w-100 btn-secondary">使用Google登入</button>
+                </div>
+                <div class="row ">
+                    <small>
+                        還沒有帳戶嗎？<button class="btn btn-outline-success" onclick="register()"
+                                       style="line-height: 0.5; margin-top: -0.25rem;">
+                            點我註冊
+                        </button>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- register container -->
+
+    <div class="row p-3 shadow bok-area"
+         style="max-width:100%; background-color: rgb(216, 224, 231);border-radius: 10px;position: absolute;visibility: hidden;margin-top: -0.25rem;"
+         id="registerbox">
+
+        <!-- Left box -->
+        <div class="col-lg-6"
+             style="background-image: url(@Url.Content("~/圖片/登入/登入介面背景.png")); background-size: cover;border-radius:10px ;">
+        </div>
+
+        <!-- right box -->
+        <div class="col-lg-6">
+            <div class="text-end" style="position: relative;z-index: 1;">
+                <button class="btn btn-outline-danger" onclick="registerclose()">X</button>
+            </div>
+            <div class="row" style="margin-top: -2.25rem;">
+                <div class="header-text mb-2 text-center">
+                    <h3>註冊會員</h3>
+                </div>
+                <div class="input-group mb-2">
+                    <b class="mt-1 me-1">會員暱稱：</b><input type="text" class="form-control form-control-lg bg-light"
+                                                         style="font-size: 12px;" id="memberName">
+                </div>
+                <div class="input-group mb-2">
+                    <b class="mt-1 me-1">註冊帳號：</b><input type="text" class="form-control form-control-lg bg-light"
+                                                         style="font-size: 12px;" id="memberAccount">
+                </div>
+                <div class="input-group mb-2">
+                    <b class="mt-1 me-1">註冊密碼：</b><input type="password" class="form-control form-control-lg bg-light"
+                                                         style="font-size: 12px;" id="memberPassword">
+                </div>
+                <div class="input-group mb-4">
+                    <b class="mt-1 me-1">確認密碼：</b><input type="password" class="form-control form-control-lg bg-light"
+                                                         style="font-size: 12px;" id="memberDoublePassword">
+                </div>
+
+                <div class="input-group mb-2">
+                    <button type="button" class="btn btn-lg w-100 btn-outline-success"
+                            onclick="memberRegister()">
+                        註冊
+                    </button>
+                </div>
+                <div class="input-group mb-2">
+                    <button type="button" class="btn btn-lg w-100 btn-secondary">使用Email註冊</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 點我註冊 -->
+<script>
+    function register() {
+        loginbox.style.visibility = "hidden";
+        registerbox.style.visibility = "visible";
+    }
+</script>
+<!-- 註冊視窗關閉 -->
+<script>
+    function registerclose() {
+        loginbox.style.visibility = "visible";
+        registerbox.style.visibility = "hidden";
+    }
+</script>
+
+<!-- 註冊視窗 -->
+<script>
+    // 接收會員資料
+    var memData = [];
+    function memberRegister() {
+        let registerbox_receive = document.getElementById("registerbox");
+        let loginbox_receive = document.getElementById("loginbox")
+        let memName = document.getElementById("memberName").value;
+        let memAccount = document.getElementById("memberAccount").value;
+        let memPassword = document.getElementById("memberPassword").value;
+        let memDoublePassword = document.getElementById("memberDoublePassword").value;
+        let myData = { dataName: memName, dataAccount: memAccount, dataPassword: memPassword }
+        let exists = memData.some(obj => obj.dataAccount == memAccount)
+        if (memName == '' || memAccount == '' || memPassword == '' || memDoublePassword == '') {
+            alert('欄位未輸入完成');
+        } else if (memPassword != memDoublePassword) {
+            alert('密碼輸入錯誤')
+        } else if (exists) {
+            alert('帳號已有人使用')
+        } else {
+            memData.push(myData);
+            alert('註冊成功');
+            memberName.value = '';
+            memberAccount.value = '';
+            memberPassword.value = '';
+            memberDoublePassword.value = '';
+            registerbox_receive.style.visibility = 'hidden'
+            loginbox_receive.style.visibility = 'visible'
+        }
+    }
+</script>
+
+<!-- 會員登入 -->
+<script>
+    function changeToHomepage() {
+        document.location.href = ("~/homePagetrue.html");
+    }
+    function logIncheck() {
+        let data = {
+            UserAccount: $('#logInAccount').val(),
+            UserPassword: $('#logInPassword').val()
+        };
+        $.ajax({
+            url: "/api/UserInfo/LogIn",
+            method: "POST",
+            data:JSON.stringify(data),
+            contentType:'application/json',
+            success: function (result) { 
+                alert(result["success"]);
+                if (result["redirectUrl"] != null) {
+                    // 頁面跳轉函數
+                    document.getElementById("loading").style.display = 'block';
+                    setTimeout(changeToHomepage, 2000);
+                    window.location.href = result["redirectUrl"];
+                }
+            },
+            error: function (xhr,Status,error) { 
+                console.error('錯誤',error)
+            }
+        })
+    }
+
+</script>

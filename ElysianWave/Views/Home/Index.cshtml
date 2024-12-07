@@ -1,0 +1,342 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+<!-- AOS特效的JavaScript -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- AOS特效的Css -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>
+    window.onload = function () {
+        AOS.init({ // 設置動畫持續時間
+            once: false,    // 設置動畫每次都能觸發
+        });
+    };
+</script>
+    <!-- 幸運抽卡關閉按鈕 -->
+    <div class="d-none d-lg-block">
+        <button type="button" class="btn btn-outline-danger closeButtonClass" id="closeButtonID"
+                onclick="randomcard_close()">
+            X
+        </button>
+    </div>
+
+    <!-- 幸運抽卡 -->
+    <div class="container-fluid" style="position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%);z-index: 1;">
+
+        <div class="d-flex justify-content-center align-items-center">
+
+            <img src="./圖片/抽卡/今天一定也是超酷的一天.png" class="luckyCard unflipper_back" id="luckyCa_1">
+
+            <img src="./圖片/抽卡/星咩咩.png" class="luckyCard unflipper_back" id="luckyCa_2">
+
+            <img src="./圖片/抽卡/浩瀚.png" class="luckyCard unflipper_back" id="luckyCa_3">
+
+            <img src="./圖片/抽卡/追日鯨.png" class="luckyCard unflipper_back" id="luckyCa_4">
+
+            <img src="./圖片/抽卡/行星.png" class="luckyCard unflipper_back" id="luckyCa_5">
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+
+            <img src="./圖片/抽卡/卡面.png" class="luckyCard unflipper_front" id="luckyCaB_1">
+
+            <img src="./圖片/抽卡/卡面.png" class="luckyCard unflipper_front" id="luckyCaB_2">
+
+            <img src="./圖片/抽卡/卡面.png" class="luckyCard unflipper_front" id="luckyCaB_3">
+
+            <img src="./圖片/抽卡/卡面.png" class="luckyCard unflipper_front" id="luckyCaB_4">
+
+            <img src="./圖片/抽卡/卡面.png" class="luckyCard unflipper_front" id="luckyCaB_5">
+        </div>
+
+    </div>
+    <!-- 幸運餅乾關閉按鈕 -->
+    <div class="d-none d-lg-block">
+        <button type="button"
+                class="btn btn-outline-danger closeButton_CookieClass_ms closeButton_CookieClass_lg closeButton_CookieClass_xl "
+                id="closeButton_CookieID" onclick="randomCookie_close()">
+            X
+        </button>
+    </div>
+    <!-- 幸運餅乾 -->
+    <div class="container-fluid" style="position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%);z-index: 1;">
+
+        <div class="d-flex justify-content-center align-items-center">
+
+            <img src="./圖片/幸運餅乾/努力是為了讓自己情緒穩定。.png" class="luckyCard" id="luckyCookie_1">
+
+            <img src="./圖片/幸運餅乾/千萬不要忘記：我們飛翔得越高，我們在那些不能飛翔的人眼中的形象越是渺小。.png" class="luckyCard" id="luckyCookie_2">
+
+            <img src="./圖片/幸運餅乾/謙遜.png" class="luckyCard" id="luckyCookie_3">
+
+            <img src="./圖片/幸運餅乾/控制自己，不要去控制外面圖片.png" class="luckyCard" id="luckyCookie_4">
+
+            <img src="./圖片/幸運餅乾/勇敢的人，先享受世界.png" class="luckyCard" id="luckyCookie_5">
+        </div>
+
+    </div>
+<div class="container-fluid">
+    <div class=" row justify-content-around ">
+
+        <!-- 左欄 -->
+        <div class="col-lg-2" style="margin-top: 130px;">
+            <!-- 文章分享 -->
+            <div class="container-fluid">
+                <ul class="nav flex-column articleshare">
+                    <p style="margin-top: 40px;">文章分享</p>
+                    <hr>
+                    <li class="nav-myLink-article">大師教你如何課題分離</li>
+                    <hr>
+                    <li class="nav-myLink-article">老闆與員工的相處100守則</li>
+                    <hr>
+                    <li class="nav-myLink-article">到底什麼是PUA？</li>
+                    <hr>
+                    <li class="nav-myLink-article">如何享受孤獨？</li>
+                    <hr>
+                    <li class="nav-myLink-article">無法表達痛苦的時候，怎麼辦?</li>
+                    <br>
+                </ul>
+                <!-- 幸運餅乾 -->
+                <div class="container-lg" style="margin-top: 50px;">
+                    <div class="card bg-light bg-opacity-50" style="border: 2px solid rgb(138, 117, 117);">
+                        <p class="daily-lucky-head mb-0">幸運餅乾</p>
+                        <img src="./圖片/幸運餅乾2.png" alt="幸運餅乾" class="card-img-bottom bg-light bg-opacity-50"
+                             style="border: 2px solid rgb(138, 117, 117) ;margin-top: -1px;"
+                             onclick="randomCookie()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 中間欄 -->
+        <div class="col-lg-8 mt-lg-80">
+            <!-- 布告欄 -->
+            <div class="container whale" style="padding: 0;max-width: 78%;text-align: start;">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-light justify-content-around bg-opacity-50"
+                     style="border-radius: 15px ;">
+                    <ul class="navbar-nav justify-content-between">
+                        <li class="nav-item p-3"><a class="nav-myLink" href="">所有消息</a></li>
+                        <li class="nav-item p-3"><a class="nav-myLink" href="">熱門活動</a></li>
+                        <li class="nav-item p-3"><a class="nav-myLink" href="">最新公告</a></li>
+                        <li class="nav-item p-3"><a class="nav-myLink" href="">版本更新</a></li>
+                    </ul>
+                </nav>
+                <div class=" bg-light bg-opacity-50 ps-5">
+                    <p class="mt-1 textFont">2024.08.26--版本更新：新增極浪天空空間</p>
+                    <p class="textFont">2024.08.23--熱門活動：累積便利貼數種小樹</p>
+                    <p class="textFont">2024.08.21--版本更新：新增黑浪島嶼背景音樂</p>
+                    <p class="textFont">2024.08.20--熱門活動：夏天酷浪每日登入送浪浪點數</p>
+                    <p class="pb-3 textFont">2024.08.17--最新公告：黑浪島嶼及極浪天空網頁維護</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 右欄 -->
+        <div class="col-lg-2">
+            <!-- 每日運勢 -->
+            <div class="container p-0 " style="margin-top: 200px;">
+                <div class="card p-0 pt-2 bg-light bg-opacity-50 mx-auto"
+                     style="width:100%;max-width: 16rem;border-radius: 15px 15px 0 0;padding: 12px;">
+
+                    <p class="daily-lucky-head">每日運勢</p>
+                    <img src="./圖片/抽卡/卡面.png" style="margin-top:-3px;border-radius:0 0 15px 15px;"
+                         id="animatedElement">
+                </div>
+            </div>
+        </div>
+
+        <!-- 極浪天空 -->
+        <div class="col-lg-12 mt-lg-50 align-items-center">
+            <div class="container-fluid p-0">
+                <div data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine"
+                     data-aos-duration="700">
+                    <a href="./skytrue.html" target="_blank" style="text-decoration: none;">
+                        <div class="d-flex justify-content-end align-items-center skywave">
+                            <h1 class="me-4" style="font-weight: bold;color:black;">極浪天空</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 黑浪島嶼 -->
+        <div class="col-lg-12 mt-5 ">
+            <div class="container-fluid p-0">
+                <div data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-sine"
+                     data-aos-duration="750">
+                    <a href="./blackwave.html" target="_blank" style="text-decoration: none;">
+                        <div class="d-flex justify-content-start align-items-center blackwave">
+                            <h1 class="ms-4" style="font-weight: bold;color: rgb(233, 232, 239);">黑浪島嶼</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+</div>
+<script>
+    // 抽卡
+    function randomcard() {
+        let myRandom = Math.floor(Math.random() * 5); //使亂數在0-5
+        // 接收圖片的陣列
+        let cardimage = [
+            document.getElementById("luckyCa_1"),
+            document.getElementById("luckyCa_2"),
+            document.getElementById("luckyCa_3"),
+            document.getElementById("luckyCa_4"),
+            document.getElementById("luckyCa_5"),
+        ];
+
+        let cardimagefront = [
+            document.getElementById("luckyCaB_1"),
+            document.getElementById("luckyCaB_2"),
+            document.getElementById("luckyCaB_3"),
+            document.getElementById("luckyCaB_4"),
+            document.getElementById("luckyCaB_5"),
+        ];
+
+        // 把圖片顯示出來
+        cardimage[myRandom].style.visibility = 'visible';
+        cardimagefront[myRandom].style.visibility = 'visible';
+        // 跳出關閉按鈕
+        closeButtonID.style.visibility = 'visible';
+
+        //一定要寫在add("flipper_back前面")因為不然就會變成翻轉後才加上來的，
+        //因為第二次開始由於下面的unflipper_back屬性被刪掉，
+        //所以為了讓翻轉效果繼續所以要在沒有這個屬性的時候加回來
+        //如果沒有加回來他會在動畫一開始的時候顯示出來就變成他自己轉兩圈的感覺，因為沒有backface-visibility:hidden，他轉到180度不會隱藏
+        // 就看起來很像自轉兩圏，因為他轉0至180度時，會顯示一個相反的，然後180度至360度又顯示出來就看起來轉兩圈
+        if (!cardimage[myRandom].classList.contains("unflipper_back")) {
+
+            cardimage[myRandom].classList.add("unflipper_back");
+        }
+
+        // 新增翻轉屬性
+        cardimagefront[myRandom].classList.add("flipper_front") //0度轉到180度隱藏起來，
+        cardimage[myRandom].classList.add("flipper_back") //180度轉到360度顯示出來
+
+        // 讓翻轉的結果在正面
+        cardimage[myRandom].addEventListener('transitionend', function () {
+            cardimage[myRandom].classList.remove("flipper_back"); //一開始unflipper_back(180deg)有設backface-visibilty:hidden隱藏→新增flipper_back轉到360度顯示，
+            cardimage[myRandom].classList.remove("unflipper_back"); //要讓最後的卡面是正面且顯示出來，所以把這個屬性值刪掉，變成預設的0deg
+            // 所以進程其實是back的話是180度隱藏後轉成360度正面顯示，然後移除360度再移除180度變回預設的0度，而0度跟360度看起來一樣所以不會有衝突
+        })
+        cardimagefront[myRandom].addEventListener('transitionend', function () {
+            cardimagefront[myRandom].classList.remove("flipper_front"); //為了下次動畫所以要刪除
+            cardimagefront[myRandom].style.visibility = 'hidden'; //為了讓卡面不要覆蓋到圖面
+
+        })
+        console.log(cardimage[myRandom]);
+    }
+
+
+    // animatedEle觸發
+
+    let animatedEle = document.getElementById("animatedElement");
+    animatedEle.addEventListener('click', randomcard);
+
+
+    // 抽卡關閉按鈕
+
+    function randomcard_close() {
+        let cardimage_close = [
+            document.getElementById("luckyCa_1"),
+            document.getElementById("luckyCa_2"),
+            document.getElementById("luckyCa_3"),
+            document.getElementById("luckyCa_4"),
+            document.getElementById("luckyCa_5"),
+        ]
+
+        let cardimagefront_close = [
+            document.getElementById("luckyCaB_1"),
+            document.getElementById("luckyCaB_2"),
+            document.getElementById("luckyCaB_3"),
+            document.getElementById("luckyCaB_4"),
+            document.getElementById("luckyCaB_5"),
+        ]
+        cardimage_close.forEach(img => {
+            img.style.visibility = 'hidden';
+        })
+        cardimagefront_close.forEach(img => {
+            img.style.visibility = 'hidden';
+        })
+        closeButtonID.style.visibility = 'hidden'
+    }
+
+
+
+    // 幸運餅乾
+
+    function randomCookie() {
+        let myRandom_Cookie = Math.floor(Math.random() * 5); //使亂數在0-5
+        // 接收圖片的陣列
+        let cookieimage = [
+            document.getElementById("luckyCookie_1"),
+            document.getElementById("luckyCookie_2"),
+            document.getElementById("luckyCookie_3"),
+            document.getElementById("luckyCookie_4"),
+            document.getElementById("luckyCookie_5"),
+        ];
+
+
+        // 把圖片顯示出來
+        cookieimage[myRandom_Cookie].style.visibility = 'visible';
+        // 跳出關閉按鈕
+        closeButton_CookieID.style.visibility = 'visible';
+
+    }
+    //幸運餅乾關閉按鈕
+    function randomCookie_close() {
+        let cookieimage_close = [
+            document.getElementById("luckyCookie_1"),
+            document.getElementById("luckyCookie_2"),
+            document.getElementById("luckyCookie_3"),
+            document.getElementById("luckyCookie_4"),
+            document.getElementById("luckyCookie_5"),
+        ]
+        cookieimage_close.forEach(img => {
+            img.style.visibility = 'hidden';
+        })
+        cookieimage_close.forEach(video => {
+            video.style.visibility = 'hidden';
+        })
+        closeButton_CookieID.style.visibility = 'hidden'
+    }
+    // 雙擊消失
+    let lastTapTime = 0;
+    let tapDelay = 300;
+    let closeImage = document.getElementsByClassName('luckyCard')
+    for (let i = 0; i < closeImage.length; i++) {
+        closeImage[i].addEventListener('touchend', function (event) {
+            let nowTime = Date.now();
+            let tapTime = nowTime - lastTapTime;
+            if (tapTime < tapDelay && tapTime > 0) {
+                closeImage.style.visibility = 'hidden';
+                closeButton_CookieID.style.visibility = 'hidden';
+                closeButtonID.style.visibility = 'hidden';
+            }
+            lastTapTime = nowTime;
+        })
+    }
+
+    for (let i = 0; i < closeImage.length; i++) {
+        closeImage[i].addEventListener('dblclick', function (event) {
+            closeImage[i].style.visibility = 'hidden';
+            closeButton_CookieID.style.visibility = 'hidden';
+            closeButtonID.style.visibility = 'hidden';
+        })
+    }
+
+
+
+</script>
+</body>

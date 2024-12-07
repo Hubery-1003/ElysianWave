@@ -1,0 +1,218 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 網頁icon與title -->
+    <title>ElysianWave極浪</title>
+    <link rel="icon" href="~/圖片/圖標圓形.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ElysianWave.styles.css" asp-append-version="true" />
+    <script src="~/lib/microsoft/signalr/dist/webworker/signalr.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <style>
+        .nav-link > u:hover, #user-id {
+            cursor: pointer;
+        }
+    </style>
+</head>
+@{
+    int? userId = HttpContextAccessor.HttpContext!.Session.GetInt32("userId");
+    string? userNickName = HttpContextAccessor.HttpContext!.Session.GetString("userNickName") != null ? HttpContextAccessor.HttpContext!.Session.GetString("userNickName") : "匿名";
+}
+<body style="background-image:url(@Url.Content(ViewBag.backGround));position:relative;background-size: cover;background-repeat: no-repeat;background-attachment: fixed;margin: 0;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- logo -->
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                    <img src="~/圖片/圖標圓形.png" alt="Logo" style="width: 30px;">
+                    <i>ElysianWave極浪</i>
+                </a>
+
+
+                <!-- 手機版 -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- 桌上型電腦 -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <!-- 列出導覽列內容 -->
+                    <ul class="navbar-nav">
+                        <!-- about us 關於我們 -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">關於我們</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" target="_blank" asp-action="AboutUs" asp-controller="Home">空間理念</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="HapinessSky">極浪天空</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="BlackWave">黑浪島嶼</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="DrawPage">心靈繪畫</a></li>
+                            </ul>
+                        </li>
+                        <!-- 心靈繪畫 -->
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" asp-controller="Home" asp-action="DrawPage">心靈繪畫</a>
+                        </li>
+                        <!-- 極浪天空 -->
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" asp-controller="Home" asp-action="HapinessSky">極浪天空</a>
+                        </li>
+                        <!-- 黑浪島嶼 -->
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" asp-controller="Home" asp-action="BlackWave">黑浪島嶼</a>
+                        </li>
+                        <!-- login in登入 -->
+                        @if (userId == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="User" asp-action="LogInPage">登入LOG IN</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <b id="user-id" class="nav-link">@userId <u>登出</u></b>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-5" style="position:relative">
+        <!-- 最後一格  -->
+        <div class="container-fluid p-0 m-0">
+            <div class="col-lg-12 mb-0 p-0">
+                <div class="row justify-content-around align-items-center"
+                     style="border-radius: 15px 15px 0px 0px; background-color: rgba(226, 225, 197, 0.82);">
+                    <!--圖標-->
+                    <div style="margin-left: 4rem;flex: 2;" class="me-5">
+                        <img src="~/圖片/圖標圓形.png" style="max-width:60%">
+                    </div>
+                    <!--內容-->
+                    <div class="ms-5" style="flex: 2;">
+                        <h4 style="font-weight: bold;">聯絡我們</h4>
+                        <br>
+                        <p style="font-weight: bold;">客服電話：07-5252-5252</p>
+                        <p style="font-weight: bold;">客服信箱：ElysianWave9898@gmail.com</p>
+                    </div>
+                    <!-- 其他 -->
+                    <div class="mt-3" style="margin-left: 3rem;flex: 2;">
+                        <p><a href="#" class="underElse">關於我們</a></p>
+                        <p><a href="#" class="underElse">常見問題</a></p>
+                        <p><a href="#" class="underElse">服務條款</a></p>
+                        <p><a href="#" class="underElse">隱私權聲明</a></p>
+                    </div>
+                    <!-- 社群媒體圖式 -->
+                    <div class="mt-0" style="flex: 2;">
+                        <img src=@Url.Content("~/圖片/社群媒體/facebook.jpeg") class="myLogo ms-1" alt="facebook">
+                        <img src=@Url.Content("~/圖片/社群媒體/instagram.jpeg") class="myLogo ms-1" alt="instagram">
+                        <img src=@Url.Content("~/圖片/社群媒體/LINE.jpeg") class="myLogo ms-1" alt="Line">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--聊天視窗-->
+    <div class="container css-chatcontainer">
+        <div class="row p-1 justify-content-center mt-3">
+            <!--顯示訊息-->
+            <div id="chat-window" class="col-12 css-chat-window"></div>
+            <!--輸入訊息-->
+            <div class="col-12 ps-3" style="position:absolute;bottom:20px">
+                <input type="text" id="user-input" style="border-radius:5px;height:38px;width:300px" />
+                <input role="button" id="sendButton" type="submit" class="btn btn-success">
+            </div>
+        </div>
+    </div>
+    <!--開啟聊天視窗的img-->
+    <img role="button" id="chat-button" src="~/圖片/aboutus//星空鯨魚.png" style="width:300px;position:fixed;bottom:0px;right:50px;">
+    
+    
+    <script>
+        //匿名的隨機id
+        var randomId = 'a' + Math.floor(Math.random() * 999999);
+        let connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+        connection.on("ReceiveMessage", (user, message, userId) => {
+            console.log("ReceiveMessage triggered:", user, message, userId);
+            //接收聊天訊息(自己)
+            if (userId == '@userId' || userId == randomId) {
+                const div = $('<div>', {
+                    style: 'background-color:transparent;text-align:end',
+                    class: 'my-2',
+                    html: `<p style="text-align:end">${user}：</p>`,
+                });
+                const content = $('<div>', {
+                    style: 'background-color:transparent;word-wrap: break-word;text-align:start;width:fit-content;max-width:100%',
+                    class: 'd-inline-block'
+                }).text(message)
+                $(div).append(content);
+                $('#chat-window').append(div);
+            }
+            //接收聊天訊息(其他人)
+            else {
+                const div = $('<div>', {
+                    style: 'background-color:transparent',
+                    class: 'my-2',
+                    html: `<p>${user}：</p>`,
+                });
+                const content = $('<div>', {
+                    style: 'background-color:transparent;word-wrap: break-word;',
+                }).text(message)
+                $(div).append(content);
+                $('#chat-window').append(div);
+            }
+
+        });
+        //發送訊息
+        connection.start().then(() => {
+            document.getElementById("sendButton").addEventListener("click", () => {
+                const user = '@Html.Raw(userNickName)';
+                const message = document.getElementById("user-input").value;
+                const userId = user != '匿名' ? '@Html.Raw(userId)' : randomId;
+                console.log(`${user} ${userId}: ${message}`);
+                connection.invoke("SendMessage", user, message, userId).catch(err => console.error(err));
+                document.getElementById("user-input").value = "";
+            });
+        }).catch(err => console.error(err));
+    </script>
+    <script>
+        //聊天視窗開啟與關閉
+        $('#chat-button').on('click', function () {
+            if ($('.css-chatcontainer').css('visibility') == 'visible') {
+                $('.css-chatcontainer').css('visibility', 'hidden')
+            }
+            else {
+                $('.css-chatcontainer').css('visibility', 'visible');
+            }
+        });
+    </script>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,213 @@
+﻿/* 背景圖片 */
+body {
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+
+    background-image: url(./圖片/浪鯨背景.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* 字體大小小於標題 */
+.ft-sz {
+    font-size: 10px;
+}
+
+
+.nav-white:hover {
+    color: azure;
+}
+
+/* nav將字體變黑變粗，並取消<a>的文字裝飾 */
+.nav-myLink {
+    color: black;
+    font-weight: bolder;
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+    /* 將上述設置在碰到時顏色變成白色 */
+    .nav-myLink:hover {
+        color: aliceblue;
+        cursor: pointer;
+    }
+
+/* 文章分享 */
+.articleshare {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(240, 248, 255, 0.51);
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+}
+
+.nav-myLink-article {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+    .nav-myLink-article:hover {
+        color: rgb(104, 97, 88);
+        cursor: pointer;
+    }
+
+
+.whale {
+    background-image: url(./圖片/鯨魚.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+    .whale:hover {
+        background-image: url(./圖片/鯨魚.gif);
+    }
+
+/* 下拉選單置中 */
+.dropdown-menu-center {
+    left: 50%;
+    transform: translateX(-25%);
+}
+
+/* 中間欄-布告欄-位置設置 */
+@media(min-width:720px) {
+    .mt-lg-80 {
+        margin-top: 20rem !important;
+    }
+
+    /* 極浪天空與上方間隔 */
+    .mt-lg-50 {
+        margin-top: 12.5rem !important;
+    }
+}
+
+/* 幸運餅乾的關閉按鈕 */
+@media(min-width:390px) {
+    .closeButton_CookieClass_ms {
+        position: fixed;
+        left: 70%;
+        top: 37%;
+        z-index: 2;
+        visibility: hidden;
+    }
+}
+
+@media(min-width:992px) {
+    .closeButton_CookieClass_lg {
+        position: fixed;
+        left: 88%;
+        top: 23%;
+        z-index: 2;
+        visibility: hidden;
+    }
+}
+
+@media (min-width:1400px) {
+    .closeButton_CookieClass_xl {
+        position: fixed;
+        left: 70%;
+        top: 37%;
+        z-index: 2;
+        visibility: hidden;
+    }
+}
+
+
+/* 右欄-每日運勢 左欄-幸運餅乾 */
+.daily-lucky-head {
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+}
+
+/* 右邊每日運勢抽獎的圖片+幸運餅乾的圖片 */
+.luckyCard {
+    visibility: hidden;
+    border-radius: 15px;
+    max-width: 100%;
+    max-height: 100vh;
+    position: fixed;
+}
+
+/* 抽卡的關閉按鈕 */
+.closeButtonClass {
+    position: fixed;
+    left: 57.5%;
+    top: 5%;
+    z-index: 2;
+    visibility: hidden;
+}
+
+
+/* 黑浪大區塊 */
+.blackwave {
+    background-image: url(./圖片/黑浪.png);
+    height: 480px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px
+}
+
+/* 極浪天空大區塊 */
+.skywave {
+    background-image: url(./圖片/極浪天空.png);
+    height: 480px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+/* 最下面的關於我們的那一欄 */
+.underElse {
+    text-decoration: none;
+    color: rgb(34, 35, 36);
+}
+
+    .underElse:hover {
+        color: rgb(154, 164, 164);
+    }
+
+/* 最下面的logo */
+.myLogo {
+    width: 100%;
+    border-radius: 15px;
+    max-width: 50px
+}
+
+/* 布告欄字型 */
+.textFont {
+    font-size: 16px;
+    font-weight: bold;
+    /* font-variant-emoji: ; 未處理 */
+}
+
+    .textFont:hover {
+        color: rgb(129, 135, 139);
+        cursor: pointer;
+    }
+
+/* 翻傳動畫 */
+.unflipper_front {
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.unflipper_back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.flipper_front {
+    transform: rotateY(180deg);
+    transition: transform 1s;
+}
+
+.flipper_back {
+    transform: rotateY(360deg);
+    transition: transform 1s;
+}

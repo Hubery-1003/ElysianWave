@@ -1,0 +1,153 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- AOS特效的JavaScript -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- AOS特效的Css -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>
+    window.onload = function () {
+        AOS.init({ // 設置動畫持續時間
+            once: false,    // 設置動畫每次都能觸發
+        });
+    };
+</script>
+
+<body>
+    <!-- Share Canvus Window -->
+    <div style="display: flex;position: absolute;width: 500px;height: 800px;align-items: center;justify-content: start;z-index: 1; background-color: #9faab38e;flex-direction: column;margin-left: 710px;margin-top: 80px;border-radius: 15px;"
+         id="shareWindow">
+        <button class="btn btn-outline-danger"
+                style="position: absolute;margin-right: 0px;align-self: flex-end;border-radius: 15px;" id="closeButton"
+                onclick="shareClose()">
+            X
+        </button>
+        <h3 style="margin-top: 30px;">心情畫布</h3>
+        <div style="display: flex;background-color:transparent;width: 400px;height: 300px;border: 2px solid black;">
+            <canvas width="396px" height="298px" id="share_canvus"></canvas>
+        </div>
+        <h3 style="margin-top: 50px;">心情小語</h3>
+        <textarea style="width: 400px;height: 250px;text-wrap: wrap;overflow-y: auto;"></textarea>
+        <button class="btn btn-outline-success mt-4" id="shareButton">分享</button>
+    </div>
+    <div class="header-text" style="margin: 1rem 0rem;text-align: center;">
+        <h2 style="color: aliceblue;">心靈畫布</h2>
+    </div>
+    <!-- Canvus -->
+    <div class="main-div" id="divid">
+        <nav class="navBar" id="navBarid">
+            <ul>
+                <li id="penBlack" class="firstgroupli">黑筆</li>
+                <li id="penYellow" class="firstgroupli">黃筆</li>
+                <li id="penRed" class="firstgroupli">紅筆</li>
+                <li id="penCustomize" class="firstgroupli">自定義顏色<input type="color" id="colorpicker"></li>
+                <li>粗度</li>
+                <li id="penwidth_1" class="secondgroupli">1</li>
+                <li id="penwidth_2" class="secondgroupli">2</li>
+                <li id="penwidth_3" class="secondgroupli">3</li>
+                <li id="penwidth_4" class="secondgroupli">4</li>
+                <li id="penwidth_5" class="secondgroupli">5</li>
+            </ul>
+        </nav>
+        <canvas id="drawCanvus"
+                style="max-width: 100%; max-height: 60%;;border: 10px double black ;border-radius: 10px;margin: 0 0.5rem;background-color: white;"
+                width="1884px" height="700px" ;>
+        </canvas>
+    </div>
+    <button id="finish1" class="finishButton">完成</button>
+
+
+
+    <script>
+        var canvus = document.getElementById("drawCanvus");
+        var canvusText = canvus.getContext('2d');
+        var painting = false;
+
+        // 筆的初始顏色、樣式、寬度
+        canvusText.lineWidth = 2; //筆的寬度
+        canvusText.lineCap = 'round'; //筆的樣式 圓筆
+        canvusText.strokeStyle = 'black'; //筆的預設顏色
+        // 點選導覽列的選項換色
+        document.getElementById('penYellow').addEventListener('click', () => canvusText.strokeStyle = 'yellow')
+        document.getElementById('penBlack').addEventListener('click', () => canvusText.strokeStyle = 'black')
+        document.getElementById('penRed').addEventListener('click', () => canvusText.strokeStyle = 'red')
+        //自定義顏色
+        //設定一個變數來取得使用者選取(iuput的顏色)
+        let colorPicker = document.getElementById('colorpicker')
+        document.getElementById('penCustomize').addEventListener('click', () => canvusText.strokeStyle = colorPicker.value)
+        document.getElementById('colorpicker').addEventListener('input', () => canvusText.strokeStyle = colorPicker.value)
+        //更換粗度
+        document.getElementById('penwidth_1').addEventListener('click', () => canvusText.lineWidth = 2)
+        document.getElementById('penwidth_2').addEventListener('click', () => canvusText.lineWidth = 6)
+        document.getElementById('penwidth_3').addEventListener('click', () => canvusText.lineWidth = 10)
+        document.getElementById('penwidth_4').addEventListener('click', () => canvusText.lineWidth = 14)
+        document.getElementById('penwidth_5').addEventListener('click', () => canvusText.lineWidth = 18)
+
+        function fillbkwhite() {
+            canvusText.fillStyle = "white";
+            canvusText.fillRect(0, 0, canvus.width, canvus.height)
+        }
+
+        fillbkwhite();
+
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+
+        function draw(e) {
+            if (!painting) return; //如果panting是false就返回
+            canvusText.lineTo(e.offsetX, e.offsetY);
+            canvusText.stroke();
+            canvusText.beginPath();
+            canvusText.moveTo(e.offsetX, e.offsetY);
+
+        }
+        function endPosition() {
+            painting = false;
+            canvusText.beginPath();
+        }
+
+        canvus.addEventListener("mousedown", startPosition);
+        canvus.addEventListener("mouseup", endPosition);
+        canvus.addEventListener("mousemove", draw);
+
+        document.getElementById('divid').addEventListener('mousemove', function (cursorY) {
+            let navBar_fun = document.getElementById('navBarid');
+            if (cursorY.offsetY <= 64) {
+                navBar_fun.style.visibility = 'visible';
+                navBar_fun.style.top = '0';
+            }
+            else {
+                navBar_fun.style.visibility = 'hidden';
+
+            }
+
+        })
+
+        $('#closeButton').on('click', function shareClose() {
+            let sw = document.getElementById("shareWindow");
+            sw.style.visibility = "hidden";
+        })
+
+        $('#finish1').on('click', function () {
+
+
+            const outputCanvas = document.getElementById("share_canvus");
+            const outputCtx = outputCanvas.getContext("2d");
+
+            const imgWidth = canvus.width;
+            const imgHeight = canvus.height;
+            const scale = Math.min(outputCanvas.width / imgWidth, outputCanvas.height / imgHeight);
+            const newWidth = imgWidth * scale;
+            const newHeight = imgHeight * scale;
+
+            outputCtx.drawImage(canvus, 0, 0,400,300)
+            $('#shareWindow').css('visibility', 'visible')
+        })
+    </script>
+</body>
+
+</html>

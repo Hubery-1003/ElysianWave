@@ -1,0 +1,28 @@
+﻿
+/* 背景圖片 */
+
+@media(min-width:390px) {
+    .mt-lg-80 {
+        margin-top: 20rem !important;
+    }
+
+    /* 極浪天空與上方間隔 */
+    .mt-lg-50 {
+        margin-top: 12.5rem !important;
+    }
+
+    .mt-lg-30 {
+        margin-top: 7.5rem !important;
+    }
+
+    .mt-lg-15 {
+        margin-top: 3.25rem !important;
+    }
+}
+
+/* 最下面的logo */
+.myLogo {
+    width: 100%;
+    border-radius: 15px;
+    max-width: 50px
+}
