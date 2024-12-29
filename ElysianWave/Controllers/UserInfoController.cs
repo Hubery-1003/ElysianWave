@@ -34,5 +34,11 @@ namespace ElysianWave.Controllers
                 return Ok(new { success = "會員未註冊" });
             }
         }
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register([FromBody] UserInfomation user) {
+            await _context.UserInfomations.AddAsync(user);
+            _context.SaveChanges();
+            return Ok(new { success = "註冊成功" });
+        }
     }
 }

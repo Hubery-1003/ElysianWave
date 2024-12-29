@@ -159,30 +159,30 @@
             console.log("ReceiveMessage triggered:", user, message, userId);
             //接收聊天訊息(自己)
             if (userId == '@userId' || userId == randomId) {
-                const div = $('<div>', {
+                const MY_DIV = $('<div>', {
                     style: 'background-color:transparent;text-align:end',
                     class: 'my-2',
                     html: `<p style="text-align:end">${user}：</p>`,
                 });
-                const content = $('<div>', {
+                const CONTENT = $('<div>', {
                     style: 'background-color:transparent;word-wrap: break-word;text-align:start;width:fit-content;max-width:100%',
                     class: 'd-inline-block'
                 }).text(message)
-                $(div).append(content);
-                $('#chat-window').append(div);
+                $(MY_DIV).append(CONTENT);
+                $('#chat-window').append(MY_DIV);
             }
             //接收聊天訊息(其他人)
             else {
-                const div = $('<div>', {
+                const MY_DIV = $('<div>', {
                     style: 'background-color:transparent',
                     class: 'my-2',
                     html: `<p>${user}：</p>`,
                 });
-                const content = $('<div>', {
+                const CONTENT = $('<div>', {
                     style: 'background-color:transparent;word-wrap: break-word;',
                 }).text(message)
-                $(div).append(content);
-                $('#chat-window').append(div);
+                $(MY_DIV).append(CONTENT);
+                $('#chat-window').append(MY_DIV);
             }
 
         });

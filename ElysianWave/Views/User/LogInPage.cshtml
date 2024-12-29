@@ -146,14 +146,27 @@
         } else if (exists) {
             alert('帳號已有人使用')
         } else {
+            let data = {
+                UserNickName: memberName.value,
+                UserAccount: memberAccount.value,
+                UserPassword: memberPassword.value
+            }
+            $.ajax({
+                url: "/api/UserInfo/Register",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (result) { alert(result['success']) },
+                error: function (xhr, status, error) { console.error("註冊失敗", error) }
+            })
             memData.push(myData);
-            alert('註冊成功');
             memberName.value = '';
             memberAccount.value = '';
             memberPassword.value = '';
             memberDoublePassword.value = '';
             registerbox_receive.style.visibility = 'hidden'
             loginbox_receive.style.visibility = 'visible'
+
         }
     }
 </script>
@@ -171,9 +184,9 @@
         $.ajax({
             url: "/api/UserInfo/LogIn",
             method: "POST",
-            data:JSON.stringify(data),
-            contentType:'application/json',
-            success: function (result) { 
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (result) {
                 alert(result["success"]);
                 if (result["redirectUrl"] != null) {
                     // 頁面跳轉函數
@@ -182,8 +195,8 @@
                     window.location.href = result["redirectUrl"];
                 }
             },
-            error: function (xhr,Status,error) { 
-                console.error('錯誤',error)
+            error: function (xhr, Status, error) {
+                console.error('錯誤', error)
             }
         })
     }
