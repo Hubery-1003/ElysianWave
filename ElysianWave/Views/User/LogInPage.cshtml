@@ -156,16 +156,18 @@
                 method: "POST",
                 data: JSON.stringify(data),
                 contentType: 'application/json',
-                success: function (result) { alert(result['success']) },
+                success: function (result) {
+                    alert(result['success']);
+                    memData.push(myData);
+                    memberName.value = '';
+                    memberAccount.value = '';
+                    memberPassword.value = '';
+                    memberDoublePassword.value = '';
+                    registerbox_receive.style.visibility = 'hidden';
+                    loginbox_receive.style.visibility = 'visible';
+                },
                 error: function (xhr, status, error) { console.error("註冊失敗", error) }
             })
-            memData.push(myData);
-            memberName.value = '';
-            memberAccount.value = '';
-            memberPassword.value = '';
-            memberDoublePassword.value = '';
-            registerbox_receive.style.visibility = 'hidden'
-            loginbox_receive.style.visibility = 'visible'
 
         }
     }
